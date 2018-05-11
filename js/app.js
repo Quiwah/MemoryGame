@@ -36,3 +36,24 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+$().ready ( function() {
+    var moves = 0;
+
+    $('.card').click ( function() {
+        moves ++;
+        //show the cow image
+        $(this).addClass('open');
+        //display the number of clicks
+        $('.moves').html(moves);
+        //rate and decrease the stars
+        if (moves < 16) {
+            $('.stars').css = 'color', '#00ae5a';
+            } else if (moves >= 25) {
+            $('.stars').css = 'color', '#ff0012';
+            } else {
+            $('.stars').css = 'color', '#fce200';
+            }
+
+        return false;
+        });
+    });

@@ -33,11 +33,12 @@ header {
 }
 
 h1 {
-    font-family: 'Pangolin', cursive;
+    font-family: 'Delius Unicase', cursive;
     font-weight: 300;
     font-size: 40px;
     background: -webkit-linear-gradient( #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -48,7 +49,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: rgba(229, 234, 238, 0.2);
+    background: rgba(229, 234, 238, 0.5);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -72,7 +73,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.2);
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.4);
 }
 
 .deck .card.open {
@@ -90,7 +91,7 @@ h1 {
  */
 
 .score-panel {
-    font-family: 'Pangolin', cursive;
+    font-family: 'Delius Unicase', cursive;
     color: #F2F2F2;
     text-align: left;
     width: 345px;
@@ -102,6 +103,7 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    color: #00ae5a;
 }
 
 .score-panel .stars li {
@@ -131,34 +133,37 @@ h1 {
 }
 */
 
-.alps {
+/*
+ * Cow images on the cards
+ */
+.alps.open {
     background: url(../img/Alps-Cow-1287866.jpg);
 }
 
-.calf {
+.calf.open {
     background: url(../img/Calf-Brown.jpg);
 }
 
-.head {
+.head.open {
     background: url(../img/Cow-Head-1715829.jpg);
 }
 
-.winter {
+.winter.open {
     background: url(../img/Cow-Winter-174822.jpg);
 }
 
-.alpine {
+.alpine.open {
     background: url(../img/Alpine-Cow.jpg);
 }
 
-.farm {
+.farm.open {
     background: url(../img/Farm-Cow-384628.jpg);
 }
 
-.highland {
+.highland.open {
     background: url(../img/Highland-Cattle.jpg);
 }
 
-.tyrol {
+.tyrol.open {
     background: url(../img/Tyrol-Cow.jpg);
 }
