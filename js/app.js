@@ -46,14 +46,24 @@ $().ready ( function() {
         //display the number of clicks
         $('.moves').html(moves);
         //rate and decrease the stars
-        if (moves < 16) {
-            $('.stars').css = 'color', '#00ae5a';
+        if (moves < 17) {
+            $('.stars').css('color', '#00ae5a'); //green stars
             } else if (moves >= 25) {
-            $('.stars').css = 'color', '#ff0012';
+            $('#second-star').remove();
+            $('.stars').css('color', '#ff0012'); //red star
             } else {
-            $('.stars').css = 'color', '#fce200';
+            $('#third-star').remove();
+            $('.stars').css('color', '#fce200'); //yellow stars
+            return false;
             }
 
         return false;
-        });
     });
+
+    //reset the game
+    $('.restart').click ( function() {
+        $('.card').removeClass('open');
+        $('.moves').html('0');
+        //put back three green stars
+    });
+});
