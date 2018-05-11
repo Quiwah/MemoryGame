@@ -38,6 +38,14 @@ function shuffle(array) {
  */
 $().ready ( function() {
     var moves = 0;
+    var stars = $('.stars');
+    //sound effects
+    function beep() {
+        var matched = $('#matched');
+        var wrong =  $('#wrong');
+        var won =  $('#won');
+        $('#sound-effects').play();
+    }
 
     $('.card').click ( function() {
         moves ++;
@@ -45,25 +53,47 @@ $().ready ( function() {
         $(this).addClass('open');
         //display the number of clicks
         $('.moves').html(moves);
+        //when move is 1, remove "s" from "moves"
+        if (moves === 1) {
+            $('.plural').css('display', 'none');
+            } else {
+            $('.plural').css('display', '');
+        }
         //rate and decrease the stars
         if (moves < 17) {
-            $('.stars').css('color', '#00ae5a'); //green stars
+            stars.css('color', '#00ae5a'); //green stars
             } else if (moves >= 25) {
             $('#second-star').remove();
-            $('.stars').css('color', '#ff0012'); //red star
+            stars.css('color', '#ff0012'); //red star
             } else {
             $('#third-star').remove();
-            $('.stars').css('color', '#fce200'); //yellow stars
+            stars.css('color', '#fce200'); //yellow stars
             return false;
-            }
-
+        }
+        //check if the opened cards are matched
+        if ($('.open:eq(0)').attr('class') === $('.open:eq(1)').attr('class')) {
+            $('.open:eq(0)').addClass('match');
+            $(this).addClass('match');
+        } else {
+            //wrong.play();
+            //$('.open:eq(0)').removeClass('open');
+            //$(this).removeClass('open');
+        }
         return false;
     });
 
-    //reset the game
+    //when the restart arrow clicked, reset the game
     $('.restart').click ( function() {
-        $('.card').removeClass('open');
-        $('.moves').html('0');
-        //put back three green stars
+        $('.card').removeClass('open match'); //turn all cards face down
+        moves = 0; //count reset
+        $('.moves').html('0'); //count number for display reset
+        stars.css('color', '#00ae5a'); //change the star color to green
+
+        //put back three stars
+        if (stars.children().length === 2) {
+            stars.append('<li id="third-star"><i class="fa fa-star"></i></li>');
+        } else if (stars.children().length === 1) {
+            stars.append('<li id="second-star"><i class="fa fa-star"></i></li>\n<li id="third-star"><i class="fa fa-star"></i></li>');
+        };
     });
 });
