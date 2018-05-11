@@ -1,9 +1,10 @@
-# Memory Game Project
+# Memory Game Project "Mootching Game"
 
 ## Table of Contents
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Resources](#resources)
 
 ## Instructions
 
@@ -18,3 +19,13 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+
+## Resources
+
+_Cow And Bell Sound_ via [SoundBible](http://soundbible.com/1143-Cow-And-Bell.html)
+
+_Icy Bell Gliss Sound Effect_ BY [ALEXANDER](http://www.orangefreesounds.com/author/alexander/)
+[http://www.orangefreesounds.com/icy-bell-gliss-sound-effect/](http://www.orangefreesounds.com/icy-bell-gliss-sound-effect/)
+
+_Bike Horn Sound_ via [SoundBible](http://soundbible.com/1446-Bike-Horn.html)
