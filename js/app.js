@@ -40,7 +40,7 @@ $().ready ( function() {
     var moves = 0;
     var stars = $('.stars');
     //sound effects
-    function beep() {
+    function beep(matched, wrong, won) {
         var matched = $('#matched');
         var wrong =  $('#wrong');
         var won =  $('#won');
@@ -61,23 +61,25 @@ $().ready ( function() {
         }
         //rate and decrease the stars
         if (moves < 17) {
-            stars.css('color', '#00ae5a'); //green stars
+            stars.css('color', '#00ae5a'); //green stars for less than 16 moves
             } else if (moves >= 25) {
             $('#second-star').remove();
-            stars.css('color', '#ff0012'); //red star
+            stars.css('color', '#ff0012'); //red star for over 25 moves
             } else {
             $('#third-star').remove();
-            stars.css('color', '#fce200'); //yellow stars
-            return false;
+            stars.css('color', '#fce200'); //yellow stars for between 17 to 24
         }
-        //check if the opened cards are matched
+        //check if the clicked cards are matched
         if ($('.open:eq(0)').attr('class') === $('.open:eq(1)').attr('class')) {
             $('.open:eq(0)').addClass('match');
             $(this).addClass('match');
+            //beep(matched);
         } else {
-            //wrong.play();
-            //$('.open:eq(0)').removeClass('open');
-            //$(this).removeClass('open');
+            //beep(wrong);
+            setTimeout(function(){
+                $('.open:eq(0)').removeClass('open');
+                $(this).removeClass('open');
+            }, 2000);
         }
         return false;
     });
