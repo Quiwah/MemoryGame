@@ -34,10 +34,6 @@ $(function setDeck() {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-var card = $('.card');
-var moves = 0;
-var stars = $('.stars');
-
 //sound effects
 function matchedCards() {
     var matched = new Audio('./sound/Cow-And-Bell-SoundBible.com-1243222141.mp3');
@@ -52,10 +48,19 @@ function finale() {
     won.play();
 }
 
-card.click (function() {
+const card = $('.card');
+var moves = 0;
+const stars = $('.stars');
+var openedCards = [];
+
+$(document).on('click', '.card', function() {
     moves ++;
     //show the cow image
     $(this).addClass('open');
+    //add opened cards to openedCards
+    openedCards.length = 2;
+    openedCards.push($(this));
+    openedCards.shift();
     //display the number of clicks
     $('.moves').html(moves);
     //when move is 1, remove "s" from "moves"
@@ -75,28 +80,34 @@ card.click (function() {
     stars.css('color', '#fce200'); //yellow stars for between 17 to 24
     }
     //check if the clicked cards are matched
-    if ($('.open:eq(0)').attr('class') == $('.open:eq(1)').attr('class')) {
-    $('.open:eq(0)').addClass('match');
-    $(this).addClass('match');
-    matchedCards(); //play sound
-    } else if ($('.open:eq(0)').attr('class') != $('.open:eq(1)').attr('class')) {
-    $(this).addClass('animated shake');
-    beep(); //play sound
-    setTimeout(function(){
-        $('.open:eq(0)').removeClass('open');
-        $(this).removeClass('open');
-        }, 1000);
-}
-    return false;
-});
+        var card1Class = openedCards[0].attr('class');
+        var card2Class = openedCards[1].attr('class');
+
+        if (card1Class === card2Class) {
+            $.each(openedCards, function(index, value) {
+                $('.card').addClass('match animated zoomIn');
+            });
+            matchedCards(); //play sound
+            openedCards = [];
+            } else {
+                $.each(openedCards, function(index, value) {
+                $('.card').addClass('animated jello');
+                openedCards = [];
+                setTimeout(function(){
+                    $('.card').removeClass('open animated jello');
+                    }, 1000);
+                },
+            beep()); //play sound
+            }
+    }
+);
 
 //when the restart arrow clicked, reset the game
 $('.restart').click (function() {
-    card.removeClass('open match'); //turn all cards face down
+    $('.card').removeClass('open matched'); //turn all cards face down
     moves = 0; //count reset
     $('.moves').html('0'); //count number for display reset
     stars.css('color', '#00ae5a'); //change the star color to green
-
     //put back three stars
     if (stars.children().length === 2) {
         stars.append('<li id="third-star"><i class="fa fa-star"></i></li>');
