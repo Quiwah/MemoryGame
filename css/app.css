@@ -22,6 +22,8 @@ body {
 }
 
 .container {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,8 +37,7 @@ header {
 h1 {
     font-family: 'Alegreya SC', serif;
     font-weight: 300;
-    font-size: 72px;
-    margin-bottom: 0;
+    margin: 0 auto;
     background: url(../img/cow-pattern.png);
     background-repeat:repeat-x;
     background-position:0 0;
@@ -46,32 +47,98 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
+@media screen and (max-width: 431px) {
+    h1 {
+        font-size: 44px;
+        margin: 0.5em 0;
+    }
+
+    .deck {
+        width: 95vw;
+        min-height: 95vw;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 2em;
+    }
+
+    .deck .card {
+        height: 80px;
+        width: 80px;
+    }
+
+    .score-panel {
+        font-size: 22px;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 432px) and (max-width: 679px) {
+    h1 {
+        font-size: 54px;
+    }
+
+    .deck {
+        width: 95vw;
+        min-height: 95vw;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 2em;
+    }
+
+    .deck .card {
+        height: 22vw;
+        width: 22vw;
+    }
+
+    .score-panel {
+        font-size: 20px;
+        width: 345px;
+    }
+}
+
+@media screen and (min-width: 680px) {
+    h1 {
+        font-size: 72px;
+    }
+
+    .deck {
+        width: 660px;
+        min-height: 680px;
+        padding: 32px;
+        border-radius: 10px;
+        margin: 0 0 3em;
+    }
+
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .score-panel {
+        font-size: 20px;
+        width: 345px;
+        margin-bottom: 10px;
+    }
+}
+
 /*
  * Styles for the deck of cards
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
     background: rgba(229, 234, 238, 0.5);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.1);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
     background: #ADA996;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-size: 0;
-    color: #ffffff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -91,7 +158,10 @@ h1 {
 
 .deck .card.match {
     cursor: default;
-    /*background: #004120;*/
+}
+
+audio {
+    display: none;
 }
 
 /*
@@ -101,10 +171,7 @@ h1 {
 .score-panel {
     font-family: 'Alegreya SC', serif;
     color: #F2F2F2;
-    font-size: 20px;
     text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
 }
 
 .score-panel .stars {
