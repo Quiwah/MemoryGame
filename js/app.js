@@ -1,29 +1,27 @@
 //a list that holds all of the cards
-var allCards = $('.deck').children();
-var card = $('.card');
-
-$().ready (function() {
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+var cardClass = ['alps', 'calf', 'head', 'winter', 'alpine', 'farm', 'highland', 'tyrol'];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(allCards) {
-    var currentIndex = allCards.length, temporaryValue, randomIndex;
+$(function setDeck() {
+    function shuffle(cardClass) {
+        var currentIndex = cardClass.length, temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = allCards[currentIndex];
-        allCards[currentIndex] = allCards[randomIndex];
-        allCards[randomIndex] = temporaryValue;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = cardClass[currentIndex];
+            cardClass[currentIndex] = cardClass[randomIndex];
+            cardClass[randomIndex] = temporaryValue;
+        }
+        return cardClass;
     }
 
-    return array;
-}
+    cardClass = shuffle(cardClass);
+    for (var x = 0; x < 2; x++) {
+        for (var i = 0; i < cardClass.length; i++) {
+            $('.deck').append('<li class="card ' + cardClass[i] + '">\n</li>');
+        }
+    }
 });
 
 /*
@@ -36,6 +34,7 @@ function shuffle(allCards) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+var card = $('.card');
 var moves = 0;
 var stars = $('.stars');
 

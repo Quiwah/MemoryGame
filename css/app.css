@@ -126,7 +126,7 @@ h1 {
  */
 
 .deck {
-    background: rgba(229, 234, 238, 0.5);
+    background: rgba(229, 234, 238, 0.2);
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.1);
     display: flex;
     flex-wrap: wrap;
@@ -170,8 +170,17 @@ audio {
 
 .score-panel {
     font-family: 'Alegreya SC', serif;
-    color: #F2F2F2;
     text-align: left;
+}
+
+.cow-pattern {
+    background: url(../img/cow-pattern.png);
+    background-repeat:repeat-x;
+    background-position:0 0;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .score-panel .stars {
@@ -190,6 +199,10 @@ audio {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+.restart {
+    color: #333;
 }
 
 /*
