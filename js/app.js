@@ -1,39 +1,29 @@
 //a list that holds all of the cards
 var cardClass = ['alps', 'calf', 'head', 'winter', 'alpine', 'farm', 'highland', 'tyrol'];
-
+var cows = cardClass.concat(cardClass);
 // Shuffle function from http://stackoverflow.com/a/2450976
 $(function setDeck() {
-    function shuffle(cardClass) {
-        var currentIndex = cardClass.length, temporaryValue, randomIndex;
+    function shuffle(cows) {
+        var currentIndex = cows.length, temporaryValue, randomIndex;
 
         while (currentIndex !== 0) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
-            temporaryValue = cardClass[currentIndex];
-            cardClass[currentIndex] = cardClass[randomIndex];
-            cardClass[randomIndex] = temporaryValue;
+            temporaryValue = cows[currentIndex];
+            cows[currentIndex] = cows[randomIndex];
+            cows[randomIndex] = temporaryValue;
         }
-        return cardClass;
+        return cows;
     }
 
-    cardClass = shuffle(cardClass);
-    for (var x = 0; x < 2; x++) {
-        for (var i = 0; i < cardClass.length; i++) {
-            $('.deck').append('<li class="card ' + cardClass[i] + '">\n</li>');
+    cows = shuffle(cows);
+
+        for (var i = 0; i < cows.length; i++) {
+            $('.deck').append('<li class="card ' + cows[i] + '">\n</li>');
         }
-    }
+
 });
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 //sound effects
 function matchedCards() {
     var matched = new Audio('./sound/Cow-And-Bell-SoundBible.com-1243222141.mp3');
@@ -80,31 +70,33 @@ $(document).on('click', '.card', function() {
     stars.css('color', '#fce200'); //yellow stars for between 17 to 24
     }
     //check if the clicked cards are matched
-        var card1Class = openedCards[0].attr('class');
-        var card2Class = openedCards[1].attr('class');
+    //var card1Class = openedCards[0].attr('class');
+    //var card2Class = openedCards[1].attr('class');
 
-        if (card1Class === card2Class) {
-            $.each(openedCards, function(index, value) {
-                $('.card').addClass('match animated zoomIn');
-            });
-            matchedCards(); //play sound
+    if (openedCards[0] == openedCards[1]) {
+        openedCards[0].addClass('match animated zoomIn');
+        openedCards[1].addClass('match animated zoomIn');
+        matchedCards(); //play sound
+        $('.card').on('animationend webkitAnimationEnd',function(){
+            $('.card').removeClass('animated zoomIn');
             openedCards = [];
-            } else {
-                $.each(openedCards, function(index, value) {
-                $('.card').addClass('animated jello');
-                openedCards = [];
-                setTimeout(function(){
-                    $('.card').removeClass('open animated jello');
-                    }, 1000);
-                },
-            beep()); //play sound
+        });
+        } else {
+            openedCards[0].addClass('animated jello');
+            openedCards[1].addClass('animated jello');
+            setTimeout(function(){
+                openedCards[0].removeClass('open animated jello');
+                openedCards[1].removeClass('open animated jello');
+            }, 1000);
+            beep(); //play sound
             }
     }
 );
 
 //when the restart arrow clicked, reset the game
 $('.restart').click (function() {
-    $('.card').removeClass('open matched'); //turn all cards face down
+    $('.card').removeClass('open'); //turn all cards face down
+    openedCards = [];
     moves = 0; //count reset
     $('.moves').html('0'); //count number for display reset
     stars.css('color', '#00ae5a'); //change the star color to green
