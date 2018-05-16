@@ -18,10 +18,9 @@ $(function setDeck() {
 
     cows = shuffle(cows);
 
-        for (var i = 0; i < cows.length; i++) {
-            $('.deck').append('<li class="card ' + cows[i] + '">\n</li>');
-        }
-
+    for (var i = 0; i < cows.length; i++) {
+        $('.deck').append('<li class="card ' + cows[i] + '">\n</li>');
+    }
 });
 
 //sound effects
@@ -41,13 +40,16 @@ function finale() {
 const card = $('.card');
 var moves = 0;
 const stars = $('.stars');
-var openedCards = [];
+let openedCards = [];
 
 $(document).on('click', '.card', function() {
     moves ++;
     //show the cow image
     $(this).addClass('open');
-    //add opened cards to openedCards
+    //put two opened cards into openedCards
+    if ((moves % 2) != 0){
+        openedCards = [];
+    }
     openedCards.length = 2;
     openedCards.push($(this));
     openedCards.shift();
@@ -70,31 +72,33 @@ $(document).on('click', '.card', function() {
     stars.css('color', '#fce200'); //yellow stars for between 17 to 24
     }
     //check if the clicked cards are matched
-    //var card1Class = openedCards[0].attr('class');
-    //var card2Class = openedCards[1].attr('class');
+    card1 = openedCards[0];
+    card2 = openedCards[1];
+    card1List = card1.attr('class');
+    card2List = card2.attr('class');
 
-    if (openedCards[0] == openedCards[1]) {
-        openedCards[0].addClass('match animated zoomIn');
-        openedCards[1].addClass('match animated zoomIn');
+    if (card1List === card2List) {
+        card1.addClass('match animated zoomIn');
+        card2.addClass('match animated zoomIn');
         matchedCards(); //play sound
-        $('.card').on('animationend webkitAnimationEnd',function(){
-            $('.card').removeClass('animated zoomIn');
-            openedCards = [];
+        $('li').on('animationend webkitAnimationEnd',function(){
+            card1.removeClass('match animated zoomIn').addClass('open');
+            card2.removeClass('match animated zoomIn').addClass('open');
         });
-        } else {
-            openedCards[0].addClass('animated jello');
-            openedCards[1].addClass('animated jello');
-            setTimeout(function(){
-                openedCards[0].removeClass('open animated jello');
-                openedCards[1].removeClass('open animated jello');
-            }, 1000);
-            beep(); //play sound
-            }
+    } else if (card1List != card2List)  {
+        card1.addClass('animated jello');
+        card2.addClass('animated jello');
+        $('li').on('animationend webkitAnimationEnd',function(){
+            card1.removeClass('open animated jello');
+            card2.removeClass('open animated jello');
+        });
+        beep(); //play sound
     }
-);
+    
+});
 
 //when the restart arrow clicked, reset the game
-$('.restart').click (function() {
+$('.restart').on('click', function() {
     $('.card').removeClass('open'); //turn all cards face down
     openedCards = [];
     moves = 0; //count reset
