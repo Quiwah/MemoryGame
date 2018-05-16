@@ -2,7 +2,7 @@
 var cardClass = ['alps', 'calf', 'head', 'winter', 'alpine', 'farm', 'highland', 'tyrol'];
 var cows = cardClass.concat(cardClass);
 // Shuffle function from http://stackoverflow.com/a/2450976
-$(function setDeck() {
+function setDeck() {
     function shuffle(cows) {
         var currentIndex = cows.length, temporaryValue, randomIndex;
 
@@ -21,7 +21,9 @@ $(function setDeck() {
     for (var i = 0; i < cows.length; i++) {
         $('.deck').append('<li class="card ' + cows[i] + '">\n</li>');
     }
-});
+};
+
+$(setDeck());
 
 //sound effects
 function matchedCards() {
@@ -62,14 +64,14 @@ $(document).on('click', '.card', function() {
         $('.plural').css('display', '');
     }
     //rate and decrease the stars
-    if (moves < 17) {
-    stars.css('color', '#00ae5a'); //green stars for less than 16 moves
-    } else if (moves >= 25) {
+    if (moves < 21) {
+    stars.css('color', '#00ae5a'); //green stars for less than 20 moves
+    } else if (moves >= 30) {
     $('#second-star').remove();
-    stars.css('color', '#ff0012'); //red star for over 25 moves
+    stars.css('color', '#ff0012'); //red star for over 30 moves
     } else {
     $('#third-star').remove();
-    stars.css('color', '#fce200'); //yellow stars for between 17 to 24
+    stars.css('color', '#fce200'); //yellow stars for between 21 to 29
     }
     //check if the clicked cards are matched
     card1 = openedCards[0];
@@ -82,8 +84,8 @@ $(document).on('click', '.card', function() {
         card2.addClass('match animated zoomIn');
         matchedCards(); //play sound
         $('li').on('animationend webkitAnimationEnd',function(){
-            card1.removeClass('match animated zoomIn').addClass('open');
-            card2.removeClass('match animated zoomIn').addClass('open');
+            card1.removeClass('animated zoomIn').addClass('open');
+            card2.removeClass('animated zoomIn').addClass('open');
         });
     } else if (card1List != card2List)  {
         card1.addClass('animated jello');
@@ -94,24 +96,24 @@ $(document).on('click', '.card', function() {
         });
         beep(); //play sound
     }
-    //when all cards match, play the music
+    //when all cards match
     if ($('.card').length == $('li.open').length) {
+        //display the modal
         $('#modal').css('display', 'block');
+        //sound effect
         finale();
+        //show stars in the modal
+        let starLists = stars.children('li').length;
+        $('.result-stars').innerHTML = starLists;
     }
 });
 
 //when the restart arrow clicked, reset the game
 $('.restart').on('click', function() {
-    $('.card').removeClass('open'); //turn all cards face down
-    openedCards = [];
-    moves = 0; //count reset
-    $('.moves').html('0'); //count number for display reset
-    stars.css('color', '#00ae5a'); //change the star color to green
-    //put back three stars
-    if (stars.children().length === 2) {
-        stars.append('<li id="third-star"><i class="fa fa-star"></i></li>');
-    } else if (stars.children().length === 1) {
-        stars.append('<li id="second-star"><i class="fa fa-star"></i></li>\n<li id="third-star"><i class="fa fa-star"></i></li>');
-    };
+    location.reload();
 });
+//close the modal window and start new game
+function closeModal() {
+    $('#modal').css('display', 'none');
+    location.reload();
+};
