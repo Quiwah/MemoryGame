@@ -94,7 +94,11 @@ $(document).on('click', '.card', function() {
         });
         beep(); //play sound
     }
-    
+    //when all cards match, play the music
+    if ($('.card').length == $('li.open').length) {
+        $('#modal').css('display', 'block');
+        finale();
+    }
 });
 
 //when the restart arrow clicked, reset the game
