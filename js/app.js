@@ -25,6 +25,32 @@ function setDeck() {
 
 $(setDeck());
 
+//Timer
+var startTime = new Date();
+var currentTime = 0;
+var min = 0;
+var sec = 0;
+var passedTime = 0;
+
+function timer() {
+    currentTime = new Date();
+    passedTime = parseInt((currentTime.getTime() - startTime.getTime())/ 1000);
+    
+    min = parseInt((passedTime / 60) % 60);
+    sec = passedTime % 60;
+
+    if(min<10) {min = '0' + min;}
+    if(sec<10) {sec = '0' + sec;}
+
+    setTimeout('timer()', 1000);
+
+    $('#timer').text(min + ':' + sec);
+}
+
+function timerStop() {
+    clearTimeout('timer()');
+}
+
 //sound effects
 function matchedCards() {
     var matched = new Audio('./sound/Cow-And-Bell-SoundBible.com-1243222141.mp3');
@@ -42,14 +68,15 @@ function finale() {
 const card = $('.card');
 var moves = 0;
 const stars = $('.stars');
-let openedCards = [];
+var openedCards = [];
 
 $(document).on('click', '.card', function() {
+    timer();
     moves ++;
     //show the cow image
     $(this).addClass('open');
     //put two opened cards into openedCards
-    if ((moves % 2) != 0){
+    if ((moves % 2) != 0 && moves != 1) {
         openedCards = [];
     }
     openedCards.length = 2;
@@ -74,10 +101,10 @@ $(document).on('click', '.card', function() {
     stars.css('color', '#fce200'); //yellow stars for between 21 to 29
     }
     //check if the clicked cards are matched
-    card1 = openedCards[0];
-    card2 = openedCards[1];
-    card1List = card1.attr('class');
-    card2List = card2.attr('class');
+    var card1 = openedCards[0];
+    var card2 = openedCards[1];
+    var card1List = card1.attr('class');
+    var card2List = card2.attr('class');
 
     if (card1List === card2List) {
         card1.addClass('match animated zoomIn');
@@ -100,11 +127,12 @@ $(document).on('click', '.card', function() {
     if ($('.card').length == $('li.open').length) {
         //display the modal
         $('#modal').css('display', 'block');
+        $('#result-time').html(min + ':' + sec);
+        $('#result-stars').html(stars.length);
+        //stop the timer
+        timerStop();
         //sound effect
         finale();
-        //show stars in the modal
-        let starLists = stars.children('li').length;
-        $('.result-stars').innerHTML = starLists;
     }
 });
 

@@ -23,9 +23,10 @@
         		<li id="second-star"><i class="fa fa-star"></i></li>
         		<li id="third-star"><i class="fa fa-star"></i></li>
         	</ul>
-
-        	<span class="cow-pattern"><span class="moves">0</span> Moove<span class="plural">s</span></span>
-
+        	<div id="moves">
+                <span class="cow-pattern"><span class="moves">0</span> Moove<span class="plural">s</span></span>
+            </div>
+            <label id="timer">00:00</label>
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -36,10 +37,12 @@
     </div>
     <div id="modal">
         <h2>Congratulations!</h2>
-        You completed the game within<br> min second.<br>
-        Your level is <span class="result-stars"></span>.
         <p>
-            <button onclick="closeModal()">Back</button>
+            You completed the game within<br><span id="result-time"></span>.<br>
+            Your got <span id="result-stars"></span> star(s).
+        </p>
+        <p>
+            <button onclick="closeModal()">Play<br>again?</button>
         </p>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
