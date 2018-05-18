@@ -88,34 +88,42 @@ h2 {
 
 @media screen and (orientation: landscape) {
     .container {
-        width: 80%;
+        width: 80vw;
     }
 
     h1 {
         font-size: 54px;
     }
 
+    h2 {
+        font-size: 30px;
+    }
+
     .deck {
-        width: 95vw;
-        min-height: 95vw;
+        width: 80vw;
+        min-height: 70vh;
         padding: 5px;
         border-radius: 5px;
-        margin-top: 2em;
     }
 
     .deck .card {
-        height: 22vw;
-        width: 22vw;
+        height: 150px;
+        width: 150px;
+        margin-bottom: 5px;
     }
 
     .score-panel {
-        font-size: 20px;
+        font-size: 25px;
+    }
+
+    #modal {
+        font-size: 1.5em;
     }
 
     button {
         margin-top: 1em;
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         font-size: 1.2em;
     }
 }

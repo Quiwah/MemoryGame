@@ -67,7 +67,7 @@ function finale() {
 
 const card = $('.card');
 var moves = 0;
-const stars = $('.stars');
+var stars = $('.stars');
 var openedCards = [];
 
 $(document).on('click', '.card', function() {
@@ -91,14 +91,14 @@ $(document).on('click', '.card', function() {
         $('.plural').css('display', '');
     }
     //rate and decrease the stars
-    if (moves < 21) {
-    stars.css('color', '#00ae5a'); //green stars for less than 20 moves
-    } else if (moves >= 30) {
+    if (moves < 30) {
+    stars.css('color', '#00ae5a'); //green stars for less than 30 moves
+    } else if (moves >= 40) {
     $('#second-star').remove();
-    stars.css('color', '#ff0012'); //red star for over 30 moves
+    stars.css('color', '#ff0012'); //red star for over 40 moves
     } else {
     $('#third-star').remove();
-    stars.css('color', '#fce200'); //yellow stars for between 21 to 29
+    stars.css('color', '#fce200'); //yellow stars for between 30 to 39
     }
     //check if the clicked cards are matched
     var card1 = openedCards[0];
@@ -123,12 +123,20 @@ $(document).on('click', '.card', function() {
         });
         beep(); //play sound
     }
+    //check how many stars the user got
+    var resultStars = stars.children().length;
+    var starsPlural;
+    if ( resultStars >= 2) {
+        starsPlural = 'stars';
+    } else {
+        starsPlural = 'star';
+    }
     //when all cards match
     if ($('.card').length == $('li.open').length) {
         //display the modal
         $('#modal').css('display', 'block');
-        $('#result-time').html(min + ':' + sec);
-        $('#result-stars').html(stars.length);
+        $('#result-time').html(' ' + min + ':' + sec);
+        $('#result-stars').html(resultStars + ' ' + starsPlural);
         //stop the timer
         timerStop();
         //sound effect
