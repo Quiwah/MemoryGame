@@ -31,6 +31,7 @@ var currentTime = 0;
 var min = 0;
 var sec = 0;
 var passedTime = 0;
+var resultTime = setInterval('timer()', 1000);
 
 function timer() {
     currentTime = new Date();
@@ -42,13 +43,11 @@ function timer() {
     if(min<10) {min = '0' + min;}
     if(sec<10) {sec = '0' + sec;}
 
-    setTimeout('timer()', 1000);
-
     $('#timer').text(min + ':' + sec);
 }
 
 function timerStop() {
-    clearTimeout('timer()');
+    clearInterval(resultTime);
 }
 
 //sound effects
@@ -126,7 +125,7 @@ $(document).on('click', '.card', function() {
     //check how many stars the user got
     var resultStars = stars.children().length;
     var starsPlural;
-    if ( resultStars >= 2) {
+    if (resultStars >= 2) {
         starsPlural = 'stars';
     } else {
         starsPlural = 'star';
