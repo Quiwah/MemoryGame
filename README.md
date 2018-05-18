@@ -7,7 +7,7 @@
 
 ## Instructions
 
-Select a card by clicking to find matched pairs.
+Select cards by clicking to find matched pairs. You will see your score when the game is completed.
 
 This is #2 project of FEND course @ Udacity.
 
