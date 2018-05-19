@@ -79,40 +79,43 @@ var cardClass = [
   }
   
   const card = $(".card");
-  var moves = 0;
+  var clicks = 0;
   var stars = $(".stars");
   var openedCards = [];
+  var moves = 0;
   
   $(document).on("click", ".card", function() {
     var resultTime = setTimeout("timer()", 1000);
-    //timer();
-    moves++;
+    clicks++;
     //show the cow image
     $(this).addClass("open");
     //put two opened cards into openedCards
-    if (moves % 2 != 0 && moves != 1) {
+    if (clicks % 2 != 0 && clicks != 1) {
       openedCards = [];
     }
     openedCards.length = 2;
     openedCards.push($(this));
     openedCards.shift();
-    //display the number of clicks
+    //display the number of moves
+    if (clicks % 2 == 0) {
+        moves++;
+    }
     $(".moves").html(moves);
-    //when move is 1, remove "s" from "moves"
+    //when move is 1, remove "s" from "clicks"
     if (moves === 1) {
       $(".plural").css("display", "none");
     } else {
       $(".plural").css("display", "");
     }
     //rate and decrease the stars
-    if (moves < 30) {
-      stars.css("color", "#00ae5a"); //green stars for less than 30 moves
-    } else if (moves >= 40) {
+    if (moves < 20) {
+      stars.css("color", "#00ae5a"); //green stars for less than 20 moves
+    } else if (moves >= 30) {
       $("#second-star").remove();
-      stars.css("color", "#ff0012"); //red star for over 40 moves
+      stars.css("color", "#ff0012"); //red star for over 30 moves
     } else {
       $("#third-star").remove();
-      stars.css("color", "#fce200"); //yellow stars for between 30 to 39
+      stars.css("color", "#fce200"); //yellow stars for between 21 to 29
     }
     //check if the clicked cards are matched
     var card1 = openedCards[0];
