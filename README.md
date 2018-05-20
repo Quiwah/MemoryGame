@@ -1,15 +1,30 @@
 # Memory Game Project "Matching Game"
 
+This is #2 project "Memory Game" of FEND course @ Udacity.
+
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [How To Play](#How To Play)
 * [Resources](#resources)
+* [Built With](#Built With)
+* [Author](#Author)
+* [Resources](#Resouces)
 
-## Instructions
+## How To Play
+Click 2 cards to find matched cow images. When all the pairs found, the game will be completed.
 
-Select a card by clicking to find matched pairs.
+You can play this game at [here](https://quiwah.github.io/MemoryGame/)
 
-This is #2 project of FEND course @ Udacity.
+## Built With
+
+* [jQuery (3.3.1)](https://jquery.com/)
+* [Animate.css (3.5.2)](https://daneden.github.io/animate.css/) - Animation for cards
+* [Font Awsome](https://fontawesome.com/?from=io) - The reload arrow
+* [Google Fonts](https://fonts.google.com/) - Fonts
+
+## Author
+
+* **Yuka Mullen**
 
 ## Resources
 
@@ -21,3 +36,5 @@ _Icy Bell Gliss Sound Effect_ BY [ALEXANDER](http://www.orangefreesounds.com/aut
 _Bike Horn Sound_ via [SoundBible](http://soundbible.com/1446-Bike-Horn.html)
 
 _Cow images_ from [https://www.maxpixel.net/](https://www.maxpixel.net/)
+
+_Farm in Oregon image for the background [https://www.goodfreephotos.com](https://www.goodfreephotos.com)
