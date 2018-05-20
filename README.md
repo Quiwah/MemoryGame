@@ -4,18 +4,18 @@ This is #2 project "Memory Game" of FEND course @ Udacity.
 
 ## Table of Contents
 
-* [How To Play](#How To Play)
+* [How To Play](#How_To_Play)
 * [Resources](#resources)
-* [Built With](#Built With)
+* [Built With](#Built_With)
 * [Author](#Author)
 * [Resources](#Resouces)
 
-## How To Play
+## How_To_Play
 Click 2 cards to find matched cow images. When all the pairs found, the game will be completed.
 
 You can play this game at [here](https://quiwah.github.io/MemoryGame/)
 
-## Built With
+## Built_With
 
 * [jQuery (3.3.1)](https://jquery.com/)
 * [Animate.css (3.5.2)](https://daneden.github.io/animate.css/) - Animation for cards
