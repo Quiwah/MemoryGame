@@ -2,14 +2,6 @@
 
 This is #2 project "Memory Game" of FEND course @ Udacity.
 
-## Table of Contents
-
-* [How To Play](#How_To_Play)
-* [Resources](#resources)
-* [Built With](#Built_With)
-* [Author](#Author)
-* [Resources](#Resouces)
-
 ## How_To_Play
 Click 2 cards to find matched cow images. When all the pairs found, the game will be completed.
 
@@ -37,4 +29,4 @@ _Bike Horn Sound_ via [SoundBible](http://soundbible.com/1446-Bike-Horn.html)
 
 _Cow images_ from [https://www.maxpixel.net/](https://www.maxpixel.net/)
 
-_Farm in Oregon image for the background [https://www.goodfreephotos.com](https://www.goodfreephotos.com)
+_Farm in Oregon image_ for the background [https://www.goodfreephotos.com](https://www.goodfreephotos.com)
