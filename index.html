@@ -21,13 +21,13 @@
         <section class="score-panel">
         	<ul class="stars">
         		<li><i class="fa fa-star"></i></li>
-        		<li id="second-star"><i class="fa fa-star"></i></li>
-        		<li id="third-star"><i class="fa fa-star"></i></li>
+        		<li class="second-star"><i class="fa fa-star"></i></li>
+        		<li class="third-star"><i class="fa fa-star"></i></li>
         	</ul>
-        	<div id="moves">
-                <span class="cow-pattern"><span class="moves">0</span> Moove<span class="plural">s</span></span>
+        	<div class="moves">
+                <span class="cow-pattern"><span class="moves-number">0</span> Moove<span class="plural">s</span></span>
             </div>
-            <label id="timer">00:00</label>
+            <label class="timer">00:00</label>
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -36,11 +36,11 @@
         <ul class="deck">
         </ul>
     </div>
-    <div id="modal">
+    <div class="modal">
         <h2>Congratulations!</h2>
         <p>
-            You completed the game at<span id="result-time"></span>.<br>
-            Your got <span id="result-stars"></span>.
+            You completed the game at<span class="result-time"></span>.<br>
+            You got <span class="result-stars"></span>.
         </p>
         <p>
             <button onclick="closeModal()">Play<br>again?</button>

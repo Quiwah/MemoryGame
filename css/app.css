@@ -63,7 +63,7 @@ h2 {
         margin: 0.5em 0;
     }
 
-    #timer {
+    .timer {
         font-size: 32px;
         margin-top: -0.3em;
     }
@@ -105,7 +105,7 @@ h2 {
         font-size: 28px;
     }
 
-    #timer {
+    .timer {
         font-size: 32px;
         margin-top: -0.1em;
     }
@@ -167,7 +167,7 @@ h2 {
         width: 150px;
     }
 
-    #modal {
+    .modal {
         font-size: 1.5em;
     }
 
@@ -257,12 +257,12 @@ audio {
     display: inline-block;
 }
 
-#moves {
+.moves {
     order: 2;
     width: 30%;
 }
 
-#timer {
+.timer {
     order: 3;
     color: #333;
     height: 100%;
@@ -313,7 +313,7 @@ audio {
 /*
  * Styles for modal window
  */
-#modal {
+.modal {
     position: fixed;
     color: #eaeaea;
     display: none;
