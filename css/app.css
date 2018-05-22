@@ -87,11 +87,14 @@ h2 {
         font-size: 20px;
     }
 
+    .modal {
+        padding-top: 20vh;
+    }
+
     button {
         margin-top: 1em;
-        width: 125px;
-        height: 125px;
-        font-size: 1.2em;
+        width: 300px;
+        height: 220px;
     }
 }
 
@@ -128,10 +131,13 @@ h2 {
         width: 120px;
     }
 
+    .modal {
+        padding-top: 15vh;
+    }
+
     button {
-        width: 150px;
-        height: 150px;
-        font-size: 1.5em;
+        width: 400px;
+        height: 300px;
     }
 }
 
@@ -169,13 +175,12 @@ h2 {
 
     .modal {
         font-size: 1.5em;
+        padding-top: 5vh;
     }
 
     button {
-        margin-top: 1em;
-        width: 125px;
-        height: 125px;
-        font-size: 1.2em;
+        width: 500px;
+        height: 400px;
     }
 }
 
@@ -321,24 +326,14 @@ audio {
     height: 100%;
     top: 0;
     left: 0;
-    padding-top: 20vh;
     background-color: #143527e7;
     z-index: 2;
-    cursor: pointer;
     text-align: center;
 }
 
 button {
-    background: url(../img/cow-pattern.png);
-    color: #143527;
-    text-shadow: 2px 2px 0 #eaeaea,
-             -2px 2px 0 #eaeaea,
-             2px -2px 0 #eaeaea,
-             -2px -2px 0 #eaeaea;
-    text-shadow: 2px 2px 1px #eaeaea,
-             -2px 2px 1px #eaeaea,
-             2px -2px 1px #eaeaea,
-             -2px -2px 1px #eaeaea;
+    background: url(../img/cows.png);
+    background-size: cover;
+    cursor: pointer;
     border: none;
-    border-radius: 50%;
 }
