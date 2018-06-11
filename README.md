@@ -30,3 +30,10 @@ _Bike Horn Sound_ via [SoundBible](http://soundbible.com/1446-Bike-Horn.html)
 _Cow images_ from [https://www.maxpixel.net/](https://www.maxpixel.net/)
 
 _Farm in Oregon image_ for the background [https://www.goodfreephotos.com](https://www.goodfreephotos.com)
+
+### My Homework
+
+I'll change my code to:
+* Use ternary operator
+* Adjust reset button
+* Fix the issue when user missed tap from mobile
